@@ -12,7 +12,9 @@ public class FileRepository implements IORepository {
     public List<String> readData() {
         List<String> rowArray = new ArrayList<>();
 
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath + "source.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(
+                filePath + "source.txt"
+        ))) {
             String row;
             while ((row = br.readLine()) != null) {
                 rowArray.add(row);
@@ -26,7 +28,9 @@ public class FileRepository implements IORepository {
     @Override
     public void writeData(List<String> toWriteList) {
 
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath + "output.txt"))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(
+                filePath + "output.txt"
+        ))) {
             for (String s : toWriteList) {
                 bw.write(s);
                 bw.newLine();
@@ -38,5 +42,9 @@ public class FileRepository implements IORepository {
 
     public void setFilePath(String filePath) {
         this.filePath = filePath;
+    }
+
+    public String getFilePath() {
+        return filePath;
     }
 }
